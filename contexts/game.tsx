@@ -42,7 +42,8 @@ const GameContextProvider = ({ children }: PropsWithChildren) => {
     [GET_PATHS.gameDetail(gameId)],
     () => (gameId ? client.getGameDetail(gameId) : undefined),
     {
-      refreshInterval: 1000,
+      // FIXME: it affects to render
+      // refreshInterval: 1000,
     }
   );
   const gameState = data?.data;

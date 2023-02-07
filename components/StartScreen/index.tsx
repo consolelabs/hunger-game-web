@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useGameContext } from "../../contexts/game";
 import { client } from "../../libs/apis";
 import { JoinGame } from "./JoinGame";
+import { MatchMaking } from "../MatchMaking";
 
 export const StartScreen = () => {
   const { gameState, setGameId, setPlayerToken } = useGameContext();
@@ -61,6 +62,9 @@ export const StartScreen = () => {
             >
               {isLoading ? "Loading..." : "New Game"}
             </button>
+
+            <MatchMaking />
+
             <div className="flex space-x-1 items-center justify-center">
               <div className="h-[1px] flex-1 bg-white/50" />
               <small className="text-white/50">Or</small>
