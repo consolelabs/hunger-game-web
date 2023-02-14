@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Logs } from "../components/Logs";
 import { Map } from "../components/Map";
 import { MovementControls } from "../components/MovementControls";
@@ -10,9 +11,14 @@ export default function Home() {
   const { gameId } = useGameContext();
 
   return (
-    <div className="game-container">
+    <div className="flex w-full h-full">
       {gameId ? (
         <>
+          <Image
+            src="/assets/spritesheets/terrains/background.png"
+            fill
+            alt="Background"
+          />
           <Map />
           <MovementControls />
           <Logs />
@@ -20,7 +26,10 @@ export default function Home() {
           <RightCorner />
         </>
       ) : (
-        <StartScreen />
+        <>
+          <Image src="/theme.png" fill alt="Theme" />
+          <StartScreen />
+        </>
       )}
     </div>
   );

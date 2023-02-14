@@ -85,13 +85,23 @@ export const StartScreen = () => {
   }, [gameState, action, isLoading, onNewGame]);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex text-white text-base p-4">
-      <div className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/90 overflow-auto p-4 md:p-6 m-auto flex flex-col gap-y-4 md:gap-y-8">
-        <div className="w-32 h-32 mx-auto">
-          <Image src="/assets/images/logo.png" fill alt="Logo" />
+    <>
+      <div className="fixed top-0 left-0 w-full h-full flex flex-col text-white text-base p-4 items-center gap-y-10 md:gap-y-20">
+        <div className="h-8 md:h-16 w-full mt-16 md:mt-28">
+          <Image
+            src="/heading.png"
+            alt="Hunger Game"
+            fill
+            className="object-contain"
+          />
         </div>
-        {render}
+        <div className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/95 overflow-auto p-4 md:p-6 flex flex-col gap-y-4 md:gap-y-8">
+          <div className="w-32 h-32 mx-auto">
+            <Image src="/assets/images/logo.png" fill alt="Logo" />
+          </div>
+          {render}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
