@@ -23,7 +23,8 @@ export const ReadyScreen = () => {
       // Render a countdown
       return (
         <span className="text-center text-4xl">
-          {minutes}:{seconds}
+          {minutes.toString().padStart(2, "0")}:
+          {seconds.toString().padStart(2, "0")}
         </span>
       );
     }

@@ -1,30 +1,22 @@
 import { useState } from "react";
-import Countdown, { CountdownRenderProps } from "react-countdown";
+import CountUp from "react-countup";
 import { ReadyScreen } from "./ReadyScreen";
 
 export const MatchMaking = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const onFindMatch = () => {
     setIsLoading(true);
   };
-  const timeout = Date.now() + 30000;
 
-  const renderCountDown = ({
-    minutes,
-    seconds,
-    completed,
-  }: CountdownRenderProps) => {
-    if (completed) {
-      // Render a completed state
-      return <ReadyScreen />;
-    } else {
-      // Render a countdown
-      return (
-        <span>
-          {minutes}:{seconds}
-        </span>
-      );
-    }
+  const clockFormatter = (value: number) => {
+    const minutes = Math.floor((value % 3600) / 60);
+    const seconds = value % 60;
+
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    const formattedSeconds = seconds.toString().padStart(2, "0");
+
+    return `${formattedMinutes}:${formattedSeconds}`;
   };
 
   return (
@@ -35,11 +27,20 @@ export const MatchMaking = () => {
       {isLoading && (
         <div className="w-full h-full bg-black bg-opacity-50 flex flex-col items-center justify-center">
           <div className="flex gap-4 w-full justify-between px-2">
-            <Countdown
-              date={timeout}
-              zeroPadTime={2}
-              renderer={renderCountDown}
+            <CountUp
+              delay={0}
+              duration={10}
+              end={10}
+              onEnd={() => {
+                if (Math.random() < 0.5) {
+                  setIsReady(true);
+                } else {
+                  alert("Cannot find a match");
+                }
+              }}
+              formattingFn={clockFormatter}
             />
+
             <button
               onClick={() => setIsLoading(false)}
               className="justify-end text-white px-1 bg-red-500"
@@ -49,8 +50,7 @@ export const MatchMaking = () => {
           </div>
         </div>
       )}
+      {isReady && <ReadyScreen />}
     </>
   );
 };
-
-// Match Found
