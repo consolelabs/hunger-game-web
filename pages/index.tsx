@@ -18,6 +18,7 @@ export default function Home() {
             src="/assets/spritesheets/terrains/background.png"
             fill
             alt="Background"
+            className="object-cover"
           />
           <Map />
           <MovementControls />
@@ -27,7 +28,7 @@ export default function Home() {
         </>
       ) : (
         <>
-          <Image src="/theme.png" fill alt="Theme" />
+          <Image src="/theme.png" fill alt="Theme" className="object-cover" />
           <StartScreen />
         </>
       )}
