@@ -4,6 +4,7 @@ import { useGameContext } from "../../contexts/game";
 import { client } from "../../libs/apis";
 import { JoinGame } from "./JoinGame";
 import { MatchMaking } from "../MatchMaking";
+import { FoundMatch } from "../MatchMaking/FoundMatch";
 
 export const StartScreen = () => {
   const { gameState, setGameId, setPlayerToken } = useGameContext();
@@ -102,6 +103,7 @@ export const StartScreen = () => {
           {render}
         </div>
       </div>
+      {/* <FoundMatch /> */}
     </>
   );
 };
