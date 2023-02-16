@@ -25,6 +25,12 @@ export const RightCorner = () => {
     }
   };
 
+  const onQuitGame = () => {
+    if (window.confirm("Are you sure you want to quit the game?")) {
+      quitGame();
+    }
+  };
+
   const onAudioButtonClick = () => {
     if (audioRef.current) {
       if (audioRef.current.paused) {
@@ -57,7 +63,7 @@ export const RightCorner = () => {
             <button
               type="button"
               className="text-md md:text-xl text-white px-1 py-1 md:px-3 md:py-2 bg-red-500 rounded-md hover:scale-105"
-              onClick={quitGame}
+              onClick={onQuitGame}
             >
               Quit
             </button>
