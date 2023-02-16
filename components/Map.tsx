@@ -160,13 +160,14 @@ export const Map = () => {
                           src={GOALS[goal.player_id! || "a"]}
                           alt="goal"
                           fill
+                          className="scale-125"
                         />
                       )}
 
                       {player && (
                         <div
                           className={[
-                            "absolute w-full h-full",
+                            "absolute w-full h-full scale-110",
                             playerFacingDirections.current[player.id],
                             wasHit ? "hit" : "idle",
                           ].join(" ")}
@@ -178,15 +179,15 @@ export const Map = () => {
                             className="object-contain !-top-1/4"
                             alt={player.name ? player.name : player.id}
                           />
-                          <div className="md:text-xs text-white">
-                            <div>
+                          <div className="absolute p-[1px] md:p-[2px] min-w-[20px] md:min-w-[30px] -left-1/2 md:-left-1/3 -translate-y-2/3 flex flex-col items-center justify-center text-[8px] md:text-xs text-black bg-white rounded-md">
+                            <span>
                               {player.id === currentPlayer?.id ? (
                                 "You"
                               ) : (
                                 <>{player.name ? player.name : player.id}</>
                               )}
-                            </div>
-                            <div>{player.points}</div>
+                            </span>
+                            <span>{player.points}</span>
                           </div>
 
                           {winner?.id === player.id && (
