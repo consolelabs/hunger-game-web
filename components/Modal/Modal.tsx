@@ -36,10 +36,10 @@ export const Modal = ({
                   </p>
                 </div>
                 {/*footer*/}
-                <div className="flex items-center gap-4 p-4 border-t border-solid border-slate-200 rounded-b">
+                <div className="flex items-center gap-4 p-2 md:p-4 border-t border-solid border-slate-200 rounded-b">
                   {onCancel && (
                     <button
-                      className="flex-1 text-red-500 background-transparent outline-none focus:outline-none ease-linear transition-all duration-150"
+                      className="flex-1 text-red-500 background-transparent outline-none focus:outline-none ease-linear transition-all duration-150 p-2 md:p-4"
                       type="button"
                       onClick={onCancel}
                     >
@@ -48,7 +48,7 @@ export const Modal = ({
                   )}
                   {onSubmit && (
                     <button
-                      className="flex-1 bg-purple-500 text-white active:bg-purple-600 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                      className="flex-1 bg-purple-500 text-white active:bg-purple-600 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150 p-2 md:p-4"
                       type="button"
                       onClick={onSubmit}
                     >
