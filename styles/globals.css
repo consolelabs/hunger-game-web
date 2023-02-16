@@ -87,15 +87,15 @@ input[type="text"] {
   }
 }
 
-.player.idle::before {
+.idle > img {
   animation: player-idle-sprites 0.5s steps(4) infinite;
 }
 
-.player.hit::before {
+.hit > img {
   animation: player-hit-sprites 0.5s steps(3) infinite;
 }
 
-.player.face-left::before {
+.face-left > img {
   transform: scaleX(-1);
 }
 
