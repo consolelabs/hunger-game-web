@@ -4,7 +4,7 @@ import { useGameContext } from "../../contexts/game";
 import { client } from "../../libs/apis";
 import { JoinGame } from "./JoinGame";
 import { MatchMaking } from "../MatchMaking";
-import { FoundMatch } from "../MatchMaking/FoundMatch";
+import Link from "next/link";
 
 export const StartScreen = () => {
   const { gameState, setGameId, setPlayerToken } = useGameContext();
@@ -88,14 +88,15 @@ export const StartScreen = () => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-full flex flex-col text-white text-base p-4 items-center gap-y-10 md:gap-y-20">
-        <div className="h-8 md:h-16 w-full mt-16 md:mt-28">
+        <Link href="/" className="h-8 md:h-16 w-full mt-16 md:mt-28">
           <Image
-            className="object-contain"
+            className="object-contain hover:scale-105 cursor-pointer"
             src="/heading.png"
             alt="Hunger Game"
             fill
           />
-        </div>
+        </Link>
+
         <div className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/95 overflow-auto p-4 md:p-6 flex flex-col gap-y-4 md:gap-y-8">
           <div className="w-32 h-32 mx-auto">
             <Image src="/assets/images/logo.png" fill alt="Logo" />
