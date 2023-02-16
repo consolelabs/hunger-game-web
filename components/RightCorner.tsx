@@ -1,7 +1,9 @@
+import { useDisclosure } from "@dwarvesf/react-hooks";
 import { Icon } from "@iconify/react";
 import { useRef, useState } from "react";
 import { useGameContext } from "../contexts/game";
 import { client } from "../libs/apis";
+import { Modal } from "./Modal/Modal";
 
 export const RightCorner = () => {
   const { gameState, currentPlayer, quitGame, mutateGameState } =
@@ -9,20 +11,40 @@ export const RightCorner = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [isAudioOff, setIsAudioOff] = useState(true);
+  const {
+    isOpen: isOpenStartGame,
+    onOpen: onOpenStartGame,
+    onClose: onCloseStartGame,
+  } = useDisclosure();
+
+  const {
+    isOpen: isOpenQuitGame,
+    onOpen: onOpenQuitGame,
+    onClose: onCloseQuitGame,
+  } = useDisclosure();
+
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const onStartGame = async () => {
-    if (window.confirm("Are you sure you want to start the game now?")) {
-      try {
-        setIsLoading(true);
-        await client.startGame(gameState?.id || "", currentPlayer!.token);
-        mutateGameState();
-      } catch (error) {
-        alert(error);
-      } finally {
-        setIsLoading(false);
-      }
+    try {
+      setIsLoading(true);
+      await client.startGame(gameState?.id || "", currentPlayer!.token);
+      mutateGameState();
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsLoading(false);
+
+      // close modal
+      onCloseStartGame();
     }
+  };
+
+  const onQuitGame = () => {
+    quitGame();
+
+    // close modal
+    onCloseQuitGame();
   };
 
   const onAudioButtonClick = () => {
@@ -48,7 +70,7 @@ export const RightCorner = () => {
               <button
                 type="button"
                 className="text-md md:text-xl text-white px-1 py-1 md:px-3 md:py-2 bg-blue-500 rounded-md hover:scale-105"
-                onClick={onStartGame}
+                onClick={onOpenStartGame}
                 disabled={isLoading}
               >
                 Start
@@ -57,7 +79,7 @@ export const RightCorner = () => {
             <button
               type="button"
               className="text-md md:text-xl text-white px-1 py-1 md:px-3 md:py-2 bg-red-500 rounded-md hover:scale-105"
-              onClick={quitGame}
+              onClick={onOpenQuitGame}
             >
               Quit
             </button>
@@ -78,6 +100,28 @@ export const RightCorner = () => {
             ref={audioRef}
             loop
             autoPlay={false}
+          />
+
+          {/* Start game modal */}
+          <Modal
+            isOpen={isOpenStartGame}
+            title="Confirmation"
+            body={<div>Are you sure you want to start the game now?</div>}
+            onSubmit={onStartGame}
+            onCancel={onCloseStartGame}
+            submitText={isLoading ? "Loading..." : "Yes"}
+            cancelText="No"
+          />
+
+          {/* Quit game modal */}
+          <Modal
+            isOpen={isOpenQuitGame}
+            title="Confirmation"
+            body={<div>Are you sure you want to quit the game?</div>}
+            onSubmit={onQuitGame}
+            onCancel={onCloseQuitGame}
+            submitText={"Yes"}
+            cancelText="No"
           />
         </>
       )}

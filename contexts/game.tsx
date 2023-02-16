@@ -63,11 +63,9 @@ const GameContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const quitGame = () => {
-    if (window.confirm("Are you sure you want to quit the game?")) {
-      setGameId("");
-      setPlayerToken("");
-      window.location.reload();
-    }
+    setGameId("");
+    setPlayerToken("");
+    window.location.reload();
   };
 
   useEffect(() => {
