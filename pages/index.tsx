@@ -27,10 +27,7 @@ export default function Home() {
           <RightCorner />
         </>
       ) : (
-        <>
-          <Image src="/theme.png" fill alt="Theme" className="object-cover" />
-          <StartScreen />
-        </>
+        <StartScreen />
       )}
     </div>
   );

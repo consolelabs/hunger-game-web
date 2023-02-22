@@ -5,6 +5,7 @@ import { client } from "../../libs/apis";
 import { JoinGame } from "./JoinGame";
 import { MatchMaking } from "../MatchMaking";
 import Link from "next/link";
+import { Transition } from "@headlessui/react";
 
 export const StartScreen = () => {
   const { gameState, setGameId, setPlayerToken } = useGameContext();
@@ -87,22 +88,71 @@ export const StartScreen = () => {
 
   return (
     <>
+      <Image
+        src="/assets/images/background.png"
+        fill
+        alt="Theme"
+        className="object-cover"
+      />
       <div className="fixed top-0 left-0 w-full h-full flex flex-col text-white text-base p-4 items-center gap-y-10 md:gap-y-20">
+        <div className="scale-[0.6] fixed top-1/2 left-1/2 translate-x-[-670px] translate-y-[-10px]">
+          <Image
+            className="animate-hover-1"
+            src="/assets/images/drone.gif"
+            alt="drone character"
+            width={227}
+            height={202}
+          />
+        </div>
+        <div className="scale-[1.5] fixed top-1/2 left-1/2 translate-x-[0px] translate-y-[-250px]">
+          <Image
+            className="animate-hover-2"
+            src="/assets/images/neko.gif"
+            alt="drone character"
+            width={227}
+            height={202}
+          />
+        </div>
+        <div className="scale-[2] fixed top-1/2 left-1/2 translate-x-[-450px] translate-y-[-40px]">
+          <Image
+            className="animate-hover-3"
+            src="/assets/images/rabby.gif"
+            alt="drone character"
+            width={227}
+            height={202}
+          />
+        </div>
+        <div className="scale-[1.8] fixed top-1/2 left-1/2 translate-x-[210px] translate-y-[20px]">
+          <Image
+            className="animate-hover-2"
+            src="/assets/images/owl.gif"
+            alt="drone character"
+            width={227}
+            height={202}
+          />
+        </div>
         <Link href="/" className="h-8 md:h-16 w-full mt-16 md:mt-28">
           <Image
-            className="object-contain hover:scale-105 cursor-pointer"
+            className="object-contain hover:scale-[1.02] transition-all duration-100 ease-out cursor-pointer"
             src="/heading.png"
             alt="Hunger Game"
             fill
           />
         </Link>
 
-        <div className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/95 overflow-auto p-4 md:p-6 flex flex-col gap-y-4 md:gap-y-8">
+        <Transition
+          show
+          appear
+          enter="transition-opacity duration-200 ease-in-out delay-700"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/95 overflow-auto p-4 md:p-6 flex flex-col gap-y-4 md:gap-y-8"
+        >
           <div className="w-32 h-32 mx-auto">
             <Image src="/assets/images/logo.png" fill alt="Logo" />
           </div>
           {render}
-        </div>
+        </Transition>
       </div>
       {/* <FoundMatch /> */}
     </>

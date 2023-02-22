@@ -11,6 +11,7 @@
   "dependencies": {
     "@dwarvesf/react-hooks": "^0.7.0",
     "@dwarvesf/react-utils": "^0.4.1",
+    "@headlessui/react": "^1.7.11",
     "@iconify/react": "^4.0.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
