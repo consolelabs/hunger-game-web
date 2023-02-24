@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 import { useDisclosure } from "@dwarvesf/react-hooks";
 import { Modal } from "../Modal/Modal";
 import { ReadyScreen } from "./ReadyScreen";
+import { Dialog } from "@headlessui/react";
 
 export const MatchMaking = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,15 +32,21 @@ export const MatchMaking = () => {
 
   return (
     <>
-      <button type="submit" className="primary w-full" onClick={onFindMatch}>
+      <button
+        type="submit"
+        className="button secondary w-full"
+        onClick={onFindMatch}
+      >
         {isOpen ? "Matching..." : "Find a Match"}
       </button>
 
-      <Modal
-        isOpen={isOpen}
-        title={"Matching..."}
-        body={
-          <div className="w-full h-full flex flex-col items-center justify-center">
+      <Dialog open={isOpen} onClose={onCancelFindMatch}>
+        <div className="fixed top-0 left-0 w-full h-full flex">
+          <div
+            className="absolute top-0 left-0 w-full h-full bg-black/50"
+            onClick={onCancelFindMatch}
+          />
+          <div className="flex flex-col items-center justify-center m-auto bg-black text-white card card-tlbr px-6 py-8">
             <div className="flex gap-4 w-full justify-between px-2">
               {isTimeOut ? (
                 <span className="text-red-500">
@@ -48,6 +55,8 @@ export const MatchMaking = () => {
               ) : (
                 <span>Looking for your opponent...</span>
               )}
+            </div>
+            <div className="text-2xl">
               <CountUp
                 delay={0}
                 duration={10}
@@ -63,13 +72,16 @@ export const MatchMaking = () => {
                 formattingFn={clockFormatter}
               />
             </div>
+            <button
+              type="button"
+              onClick={onCancelFindMatch}
+              className="button primary mt-8"
+            >
+              Cancel
+            </button>
           </div>
-        }
-        cancelText="Cancel"
-        onCancel={() => {
-          onCancelFindMatch();
-        }}
-      />
+        </div>
+      </Dialog>
       {isReady && <ReadyScreen />}
     </>
   );

@@ -64,12 +64,12 @@ export const RightCorner = () => {
     <div className="absolute top-2 right-2 md:top-4 md:right-4 z-50 flex flex-col items-end gap-y-2 md:gap-y-4">
       {gameState && (
         <>
-          <div className="flex gap-2 md:gap-4">
+          <div className="flex gap-2">
             {gameState.status === "new" &&
             gameState.players[0].id === currentPlayer?.id ? (
               <button
                 type="button"
-                className="text-md md:text-xl text-white px-1 py-1 md:px-3 md:py-2 bg-blue-500 rounded-md hover:scale-105"
+                className="button primary"
                 onClick={onOpenStartGame}
                 disabled={isLoading}
               >
@@ -78,7 +78,7 @@ export const RightCorner = () => {
             ) : null}
             <button
               type="button"
-              className="text-md md:text-xl text-white px-1 py-1 md:px-3 md:py-2 bg-red-500 rounded-md hover:scale-105"
+              className="button secondary"
               onClick={onOpenQuitGame}
             >
               Quit

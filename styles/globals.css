@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --border-size: 4px;
+  --border-corner-size: 16px;
+  --border-path-tlbr: var(--border-corner-size) 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 calc(100% - var(--border-size)), calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)), calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)), calc(100% - var(--border-size)) var(--border-size), var(--border-corner-size) var(--border-size), var(--border-size) var(--border-corner-size), var(--border-size) calc(100% - var(--border-size)), 0 calc(100% - var(--border-size)), 0 var(--border-corner-size);
+  --border-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 calc(100% - var(--border-size)), calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)), calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)), calc(100% - var(--border-size)) var(--border-size), var(--border-size) var(--border-size), var(--border-size) var(--border-corner-size), var(--border-size) calc(100% - var(--border-size)), 0 calc(100% - var(--border-size)), 0 0;
+  --container-path-tlbr: var(--border-corner-size) 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 var(--border-corner-size);
+  --container-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 var(--border-corner-size);
+}
+
 html,
 body,
 #__next {
@@ -18,9 +27,30 @@ body,
   position: relative;
 }
 
-button.primary {
-  @apply bg-white text-black px-4 py-2 font-medium rounded-md;
+/* Button */
+
+.button {
+  @apply px-4 py-2 font-medium uppercase font-black transition-all;
+  font-family: 'Industry';
+  box-shadow: 0px 2px 2px var(--button-shadow-color);
 }
+
+.button:active {
+  box-shadow: 0 0 0 var(--button-shadow-color), inset 0 2px 2px var(--button-shadow-color);
+  transform: translate(0, 2px);
+}
+
+.button.primary {
+  @apply text-white bg-red-500;
+  --button-shadow-color: #7f1d1d;
+}
+
+.button.secondary {
+  @apply text-black bg-cyan-500;
+  --button-shadow-color: #164e63;
+}
+
+/* Input */
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -35,7 +65,7 @@ input[type="number"] {
 }
 
 input[type="text"] {
-  @apply block w-full rounded-md bg-background-secondary p-2 text-white;
+  @apply bg-teal-900/30 border-2 border-cyan-500 px-4 py-2 outline-none focus:border-white;
 }
 
 @keyframes background-sprites {
@@ -109,4 +139,33 @@ input[type="text"] {
   border-radius: 9999px;
   height: 1px;
   width: 100%;
+}
+
+/* Card */
+
+.card { 
+  @apply relative;
+}
+
+.card::before {
+  @apply absolute w-full h-full top-0 left-0;
+  content: "";
+  background-image: linear-gradient(to bottom right, #5b21b6, #06b6d4);
+}
+
+.card-tlbr {
+  
+  clip-path: polygon(var(--container-path-tlbr));
+}
+
+.card-tlbr::before {
+  clip-path: polygon(var(--border-path-tlbr));
+}
+
+.card-br {
+  clip-path: polygon(var(--container-path-br));
+}
+
+.card-br::before {
+  clip-path: polygon(var(--border-path-br));
 }

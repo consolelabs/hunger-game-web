@@ -67,3 +67,31 @@
   font-weight: 700;
   src: url("/assets/fonts/chakra-petch-bold-italic.ttf");
 }
+
+@font-face {
+  font-family: "Industry";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/assets/fonts/Industry-Black.ttf");
+}
+
+@font-face {
+  font-family: "Industry";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/assets/fonts/Industry-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Industry";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/assets/fonts/Industry-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Industry";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/assets/fonts/Industry-Light.ttf");
+}

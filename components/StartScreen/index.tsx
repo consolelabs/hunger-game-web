@@ -58,7 +58,7 @@ export const StartScreen = () => {
             />
             <button
               type="submit"
-              className="primary w-full"
+              className="button primary w-full"
               onClick={onNewGame}
               disabled={isLoading}
             >
@@ -69,12 +69,12 @@ export const StartScreen = () => {
 
             <div className="flex space-x-1 items-center justify-center">
               <div className="h-[1px] flex-1 bg-white/50" />
-              <small className="text-white/50">Or</small>
+              <small className="text-white">OR</small>
               <div className="h-[1px] flex-1 bg-white/50" />
             </div>
             <button
               type="submit"
-              className="primary w-full"
+              className="button secondary w-full"
               onClick={() => setAction("join")}
               disabled={isLoading}
             >
@@ -131,28 +131,31 @@ export const StartScreen = () => {
             height={202}
           />
         </div>
-        <Link href="/" className="h-8 md:h-16 w-full mt-16 md:mt-28">
-          <Image
-            className="object-contain hover:scale-[1.02] transition-all duration-100 ease-out cursor-pointer"
-            src="/heading.png"
-            alt="Hunger Game"
-            fill
-          />
-        </Link>
-
-        <Transition
-          show
-          appear
-          enter="transition-opacity duration-200 ease-in-out delay-700"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          className="max-w-full w-[384px] max-h-[80vh] rounded-md bg-background-primary/95 overflow-auto p-4 md:p-6 flex flex-col gap-y-4 md:gap-y-8"
-        >
-          <div className="w-32 h-32 mx-auto">
-            <Image src="/assets/images/logo.png" fill alt="Logo" />
-          </div>
-          {render}
-        </Transition>
+        <div className="m-auto">
+          <Link href="/" className="flex flex-col">
+            <div className="w-32 h-32 mx-auto">
+              <Image src="/assets/images/logo.png" fill alt="Logo" />
+            </div>
+            <div className="h-16">
+              <Image
+                className="object-contain hover:scale-[1.02] transition-all duration-100 ease-out cursor-pointer"
+                src="/heading.png"
+                alt="Hunger Game"
+                fill
+              />
+            </div>
+          </Link>
+          <Transition
+            show
+            appear
+            enter="transition-opacity duration-200 ease-in-out delay-700"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            className="max-w-full w-[384px] max-h-[80vh] overflow-auto p-4 md:p-8 flex flex-col gap-y-4 md:gap-y-8 card card-br bg-black/50 backdrop-blur-sm"
+          >
+            {render}
+          </Transition>
+        </div>
       </div>
       {/* <FoundMatch /> */}
     </>

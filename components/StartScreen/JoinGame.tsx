@@ -65,7 +65,7 @@ export const JoinGame = (props: Props) => {
       />
       <div className="flex flex-col space-y-1 flex-1">
         <div className="uppercase text-xs font-medium text-white/70">Games</div>
-        <div className="div flex flex-col space-y-2 p-2 rounded-md bg-white/5 overflow-auto max-h-[50vh]">
+        <div className="div flex flex-col space-y-2 p-2 bg-white/5 overflow-auto min-h-[200px] max-h-[50vh]">
           {games.map((game) => {
             const isSelected = gameIdToJoin === game.id;
 
@@ -100,7 +100,7 @@ export const JoinGame = (props: Props) => {
       <div className="flex space-x-2">
         <button
           type="button"
-          className="primary flex-1"
+          className="button secondary flex-1"
           onClick={onInspect}
           disabled={isLoading}
         >
@@ -108,7 +108,7 @@ export const JoinGame = (props: Props) => {
         </button>
         <button
           type="submit"
-          className="primary flex-1"
+          className="button primary flex-1"
           onClick={onJoin}
           disabled={isLoading}
         >
