@@ -16,8 +16,8 @@ export default function Home() {
         <>
           <Image
             src="/assets/spritesheets/terrains/background.png"
-            fill
             alt="Background"
+            fill
             className="object-cover"
           />
           <Map />
