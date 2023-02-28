@@ -65,7 +65,7 @@ export const LeftCorner = () => {
   ];
 
   return (
-    <div className="absolute top-2 left-2 md:top-4 md:left-4 text-sm md:text-xl text-white flex flex-col items-start gap-y-2 md:gap-y-4">
+    <div className="!absolute top-2 left-2 md:top-4 md:left-4 text-sm md:text-xl text-white flex flex-col items-start gap-y-2 md:gap-y-4 card card-br p-6 bg-black/30 backdrop-blur-sm">
       <div className="flex gap-2 md:gap-4">
         {Object.keys(POINTS).map((pts) => (
           <div className="flex gap-2 items-center" key={pts}>
