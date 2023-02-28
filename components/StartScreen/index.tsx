@@ -89,7 +89,7 @@ export const StartScreen = () => {
   return (
     <>
       <Image
-        src="/assets/images/background.png"
+        src="/assets/images/background.jpeg"
         fill
         alt="Theme"
         className="object-cover"
