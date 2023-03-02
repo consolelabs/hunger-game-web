@@ -1,6 +1,6 @@
 export const GOALS: Record<string, string> = {
-  a: "/assets/spritesheets/portals/portal-green.gif",
-  b: "/assets/spritesheets/portals/portal-purple.gif",
-  c: "/assets/spritesheets/portals/portal-red.gif",
-  d: "/assets/spritesheets/portals/portal-yellow.gif",
+  a: "/assets/spritesheets/portals/portal-green.webp",
+  b: "/assets/spritesheets/portals/portal-purple.webp",
+  c: "/assets/spritesheets/portals/portal-red.webp",
+  d: "/assets/spritesheets/portals/portal-yellow.webp",
 };

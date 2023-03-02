@@ -15,7 +15,7 @@ export default function Home() {
       {gameId ? (
         <>
           <Image
-            src="/assets/spritesheets/terrains/background.png"
+            src="/assets/spritesheets/terrains/background.jpg"
             alt="Background"
             fill
             className="object-cover"
