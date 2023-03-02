@@ -98,7 +98,7 @@ export const StartScreen = () => {
         <div className="scale-[0.6] fixed top-1/2 left-1/2 translate-x-[-670px] translate-y-[-10px]">
           <Image
             className="animate-hover-1"
-            src="/assets/images/drone.gif"
+            src="/assets/images/drone.webp"
             alt="drone character"
             width={227}
             height={202}
@@ -107,7 +107,7 @@ export const StartScreen = () => {
         <div className="scale-[1.5] fixed top-1/2 left-1/2 translate-x-[0px] translate-y-[-250px]">
           <Image
             className="animate-hover-2"
-            src="/assets/images/neko.gif"
+            src="/assets/images/neko.webp"
             alt="drone character"
             width={227}
             height={202}
@@ -116,7 +116,7 @@ export const StartScreen = () => {
         <div className="scale-[2] fixed top-1/2 left-1/2 translate-x-[-450px] translate-y-[-40px]">
           <Image
             className="animate-hover-3"
-            src="/assets/images/rabby.gif"
+            src="/assets/images/rabby.webp"
             alt="drone character"
             width={227}
             height={202}
@@ -125,7 +125,7 @@ export const StartScreen = () => {
         <div className="scale-[1.8] fixed top-1/2 left-1/2 translate-x-[210px] translate-y-[20px]">
           <Image
             className="animate-hover-2"
-            src="/assets/images/owl.gif"
+            src="/assets/images/owl.webp"
             alt="drone character"
             width={227}
             height={202}
