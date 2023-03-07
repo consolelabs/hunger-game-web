@@ -5,10 +5,45 @@
 :root {
   --border-size: 4px;
   --border-corner-size: 16px;
-  --border-path-tlbr: var(--border-corner-size) 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 calc(100% - var(--border-size)), calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)), calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)), calc(100% - var(--border-size)) var(--border-size), var(--border-corner-size) var(--border-size), var(--border-size) var(--border-corner-size), var(--border-size) calc(100% - var(--border-size)), 0 calc(100% - var(--border-size)), 0 var(--border-corner-size);
-  --border-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 calc(100% - var(--border-size)), calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)), calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)), calc(100% - var(--border-size)) var(--border-size), var(--border-size) var(--border-size), var(--border-size) var(--border-corner-size), var(--border-size) calc(100% - var(--border-size)), 0 calc(100% - var(--border-size)), 0 0;
-  --container-path-tlbr: var(--border-corner-size) 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 var(--border-corner-size);
-  --container-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)), calc(100% - var(--border-corner-size)) 100%, 0 100%, 0 var(--border-corner-size);
+  --border-path-tlbr: var(--border-corner-size) 0, 100% 0,
+    100% calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-corner-size)) 100%, 0 100%,
+    0 calc(100% - var(--border-size)),
+    calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)),
+    calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-size)) var(--border-size),
+    var(--border-corner-size) var(--border-size),
+    var(--border-size) var(--border-corner-size),
+    var(--border-size) calc(100% - var(--border-size)),
+    0 calc(100% - var(--border-size)), 0 var(--border-corner-size);
+  --border-path-tl: var(--border-corner-size) 0, 100% 0, 100% 100%, 0 100%,
+    0 calc(100% - var(--border-size)),
+    calc(100% - var(--border-size)) calc(100% - var(--border-size)),
+    calc(100% - var(--border-size)) calc(100% - var(--border-size)),
+    calc(100% - var(--border-size)) var(--border-size),
+    var(--border-corner-size) var(--border-size),
+    var(--border-size) var(--border-corner-size),
+    var(--border-size) calc(100% - var(--border-size)),
+    0 calc(100% - var(--border-size)), 0 var(--border-corner-size);
+  --border-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-corner-size)) 100%, 0 100%,
+    0 calc(100% - var(--border-size)),
+    calc(100% - var(--border-corner-size)) calc(100% - var(--border-size)),
+    calc(100% - var(--border-size)) calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-size)) var(--border-size),
+    var(--border-size) var(--border-size),
+    var(--border-size) var(--border-corner-size),
+    var(--border-size) calc(100% - var(--border-size)),
+    0 calc(100% - var(--border-size)), 0 0;
+  --container-path-tlbr: var(--border-corner-size) 0, 100% 0,
+    100% calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-corner-size)) 100%, 0 100%,
+    0 var(--border-corner-size);
+  --container-path-tl: var(--border-corner-size) 0, 100% 0, 100% 100%, 0 100%,
+    0 var(--border-corner-size);
+  --container-path-br: 0 0, 100% 0, 100% calc(100% - var(--border-corner-size)),
+    calc(100% - var(--border-corner-size)) 100%, 0 100%,
+    0 var(--border-corner-size);
 }
 
 html,
@@ -31,12 +66,13 @@ body,
 
 .button {
   @apply px-4 py-2 font-medium uppercase font-black transition-all;
-  font-family: 'Industry';
+  font-family: "Industry";
   box-shadow: 0px 2px 2px var(--button-shadow-color);
 }
 
 .button:active {
-  box-shadow: 0 0 0 var(--button-shadow-color), inset 0 2px 2px var(--button-shadow-color);
+  box-shadow: 0 0 0 var(--button-shadow-color),
+    inset 0 2px 2px var(--button-shadow-color);
   transform: translate(0, 2px);
 }
 
@@ -46,7 +82,8 @@ body,
 }
 
 .button.secondary {
-  @apply text-black bg-cyan-500;
+  color: white;
+  background-color: #61727b;
   --button-shadow-color: #164e63;
 }
 
@@ -143,7 +180,7 @@ input[type="text"] {
 
 /* Card */
 
-.card { 
+.card {
   @apply relative;
 }
 
@@ -153,8 +190,15 @@ input[type="text"] {
   background-image: linear-gradient(to bottom right, #5b21b6, #06b6d4);
 }
 
+.card-tl {
+  clip-path: polygon(var(--container-path-tl));
+}
+
+.card-tl::before {
+  clip-path: polygon(var(--border-path-tl));
+}
+
 .card-tlbr {
-  
   clip-path: polygon(var(--container-path-tlbr));
 }
 

@@ -68,22 +68,19 @@ export const Logs = () => {
             return (
               <div
                 className={[
-                  "bg-blue-400 w-40 h-40 md:w-60 md:h-60 p-3 flex flex-col items-center translate-y-48 transition-all text-xl rounded-md",
+                  "bg-black/30 text-white backdrop-blur-sm card card-tl w-40 h-40 md:w-60 md:h-60 p-3 flex flex-col items-center translate-y-48 transition-all text-xl",
                   isLogsExpanded ? "!translate-y-0" : "",
                 ].join(" ")}
                 key={playerId}
               >
-                <div className="text-white text-center mb-2 md:mb-4 px-2 md:px-4">
+                <div className="text-center mb-2 md:mb-4 px-2 md:px-4">
                   {isInspecting ? <>{`P${index + 1}`}&nbsp;</> : ""} Logs
                 </div>
                 <div className="flex-1 w-full overflow-auto">
                   {historyByPlayer[playerId].length > 0 ? (
                     historyByPlayer[playerId].map((history, historyIndex) => {
                       return (
-                        <div
-                          className="bg-white p-1 text-xs"
-                          key={historyIndex}
-                        >
+                        <div className=" p-1 text-xs" key={historyIndex}>
                           {isInspecting ? `P${index + 1}` : "You"}{" "}
                           {history.action} {history.action_result}.
                           {history.got_bomb && (
@@ -111,7 +108,7 @@ export const Logs = () => {
                       );
                     })
                   ) : (
-                    <div className="bg-white h-8 p-1 mb-1 rounded-sm text-xs flex flex-col justify-center text-center">
+                    <div className="h-8 p-1 mb-1 text-xs flex flex-col justify-center text-center">
                       No logs.
                     </div>
                   )}
@@ -122,7 +119,7 @@ export const Logs = () => {
       </div>
       <button
         type="button"
-        className="bg-white rounded-md cursor-pointer absolute bottom-2 md:bottom-4 -right-8 w-6 h-6"
+        className="bg-black/60 cursor-pointer absolute bottom-2 md:bottom-4 -right-8 w-6 h-6"
         onClick={() => setIsLogsExpanded((o) => !o)}
       >
         {!isLogsExpanded ? (
@@ -133,7 +130,7 @@ export const Logs = () => {
             height="24"
           >
             <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M12 8l6 6H6z" />
+            <path d="M12 8l6 6H6z" stroke="white" fill="white" />
           </svg>
         ) : (
           <svg
@@ -143,7 +140,7 @@ export const Logs = () => {
             height="24"
           >
             <path fill="none" d="M0 0h24v24H0z" />
-            <path d="M12 16l-6-6h12z" />
+            <path d="M12 16l-6-6h12z" stroke="white" fill="white" />
           </svg>
         )}
       </button>
