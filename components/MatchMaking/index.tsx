@@ -1,17 +1,49 @@
 import { useState } from "react";
 import CountUp from "react-countup";
 import { useDisclosure } from "@dwarvesf/react-hooks";
-import { Modal } from "../Modal/Modal";
 import { ReadyScreen } from "./ReadyScreen";
 import { Dialog } from "@headlessui/react";
+import { BASE_SITE, client } from "../../libs/apis";
+import { useGameContext } from "../../contexts/game";
+import { CustomSocket } from "../../libs/socket";
 
 export const MatchMaking = () => {
+  const { gameState, setGameId, setPlayerToken } = useGameContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isReady, setIsReady] = useState(false);
   const [isTimeOut, setIsTimeOut] = useState(false);
-  const onFindMatch = () => {
-    onOpen();
+  const onFindMatch = async () => {
+    // onOpen();
     // implement logic later
+    // Create a new game
+    try {
+      const { token } = await client.findAMatch({ name: "test" });
+      setPlayerToken(token);
+
+      let socket = new CustomSocket(`ws://${BASE_SITE}/ws`, {
+        params: { match_token: token },
+      });
+
+      socket.connect();
+
+      let channel = socket.channel("match:lobby", {});
+
+      channel
+        .join()
+        .receive("ok", (resp) => {
+          console.log("Joined successfully", resp);
+          channel.leave();
+        })
+        .receive("error", (err) => {
+          console.log("Unable to join", err);
+        });
+
+      channel.on("init_match", (msg) => {
+        console.log(msg);
+      });
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const onCancelFindMatch = () => {

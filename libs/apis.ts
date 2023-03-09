@@ -1,7 +1,8 @@
-import { Game, MoveType, Player } from "../types/game";
+import { Game, MatchMaking, MoveType, Player } from "../types/game";
 import fetcher from "./fetcher";
 
-const BASE_URL = process.env.BASE_URL || "https://hunger.fly.dev";
+export const BASE_SITE = process.env.BASE_SITE || "hunger.fly.dev";
+export const BASE_URL = process.env.BASE_URL || `https://${BASE_SITE}`;
 
 export interface Response<T> {
   data: T;
@@ -79,6 +80,18 @@ class Client {
       body: JSON.stringify({
         token,
         action,
+      }),
+    });
+  }
+
+  public findAMatch({ name }: { name: string }) {
+    return fetcher<MatchMaking>(`${BASE_URL}/api/match-making`, {
+      method: "POST",
+      headers: {
+        ...this.headers,
+      },
+      body: JSON.stringify({
+        name,
       }),
     });
   }

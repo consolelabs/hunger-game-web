@@ -148,7 +148,7 @@ export const StartScreen = () => {
           <Transition
             show
             appear
-            enter="transition-opacity duration-200 ease-in-out delay-700"
+            enter="transition-opacity duration-200 ease-in-out delay-500"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             className="max-w-full w-[384px] max-h-[80vh] overflow-auto p-4 md:p-8 flex flex-col gap-y-4 md:gap-y-8 card card-br bg-black/50 backdrop-blur-sm"

@@ -33,6 +33,12 @@ export interface Game {
   goal: Goal[];
 }
 
+export interface MatchMaking {
+  id: string;
+  game: string;
+  token: string;
+}
+
 export interface Player {
   id: string;
   location: {
