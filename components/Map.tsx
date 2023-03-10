@@ -102,6 +102,8 @@ export const Map = () => {
                       goal.location.row - 1 === rowIndex
                   );
 
+                  const selectedGoal = GOALS[goal?.player_id || "a"];
+
                   // Step 3: check if this cell has cell value
                   const cellValue = gameState?.map[rowIndex][colIndex];
                   let point = 0;
@@ -157,10 +159,10 @@ export const Map = () => {
 
                       {goal && (
                         <Image
-                          src={GOALS[goal.player_id! || "a"]}
+                          src={selectedGoal.src}
                           alt="goal"
                           fill
-                          className="scale-125"
+                          className={`scale-125 ${selectedGoal.css}`}
                         />
                       )}
 
