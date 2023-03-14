@@ -6,6 +6,7 @@ import { JoinGame } from "./JoinGame";
 import { MatchMaking } from "../MatchMaking";
 import Link from "next/link";
 import { Transition } from "@headlessui/react";
+import { FoundMatch } from "../MatchMaking/FoundMatch";
 
 export const StartScreen = () => {
   const { gameState, setGameId, setPlayerToken } = useGameContext();
